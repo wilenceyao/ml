@@ -1,18 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "ml.h"
 
-#include "mpc.h"
-#include "parsing.h"
-#include "evaluation.h"
 
 static char input[2048];
 
 int main(int argc, char** argv) {
     mpc_parser_t* Number = mpc_new("number");
     mpc_parser_t* Operator = mpc_new("operator");
-    mpc_parser_t* Expr = mpc_new("expr");
-   
+    mpc_parser_t* Expr = mpc_new("expr");    
+    /* define language */
     mpca_lang(MPCA_LANG_DEFAULT,
     "                                                        \
         number  : /-?[0-9]+([.][0-9]+)?/ ;                   \
@@ -20,7 +15,6 @@ int main(int argc, char** argv) {
         expr    : <number> | '(' <operator> <expr>+ ')';     \
     ",
     Number, Operator, Expr);
-
     puts("ml version 0.0.1");
     puts("Press Ctrl+c to Exit\n");
     
@@ -32,13 +26,8 @@ int main(int argc, char** argv) {
         if (mpc_parse("ml", input, Expr, &r)) {
             /* On Success Print the AST */
             /* mpc_ast_print(r.output); */
-            double result = eval(r.output);
-            if((result-(int)result) < 1e-15 || \
-                    (result-(int)result) < -0.999999999999999 ) {
-                printf("%d\n", (int)result);
-            } else {
-                printf("%g\n", result);
-            }
+            lval result = eval(r.output);
+            lval_print(result);
             mpc_ast_delete(r.output);
         } else {
             /* Otherwise Print the Error */

@@ -8,7 +8,12 @@ A minimal lisp interpreter.
 Implemented:
  * Grammar
  * Arithmetic expression
+ * Error Handling
 
+## Environment
+ * CentOS 7 (3.10.0-123.el7.x86_64)
+ * cmake 2.8.11
+ * clang 3.4.2
 
 ## HOW TO
 ### clone and compile
@@ -26,13 +31,14 @@ make
 ml version 0.0.1
 Press Ctrl+c to Exit
 
-ml> ( + 1 3.4 )
-4.4
+ml> ( + 1 2.3)
+3.3
+ml> (/ 2 0)
+Error: Division Zero
 ml>
 ```
 
 ## TO DO
- * Error Handling
  * Functions
 
 ## Reference

@@ -11,24 +11,36 @@
  * } 
  */ 
 
-double eval_op(double x, char* op, double y) {
-    if (strcmp(op, "+") == 0) { return x + y; }
-    if (strcmp(op, "-") == 0) { return x - y; }
-    if (strcmp(op, "*") == 0) { return x * y; }
-    if (strcmp(op, "/") == 0) { return x / y; }
-    if (strcmp(op, "%") == 0) { return (int)x % (int)y; }
+lval eval_op(lval x, char* op, lval y) {
 
-    return 0;
+    /* value is error */
+    if (x.type == LVAL_ERR) { return x; }
+    if (y.type == LVAL_ERR) { return y;}
+
+    if (strcmp(op, "+") == 0) { return lval_num(x.num + y.num); }
+    if (strcmp(op, "-") == 0) { return lval_num(x.num - y.num); }
+    if (strcmp(op, "*") == 0) { return lval_num(x.num * y.num); }
+    if (strcmp(op, "/") == 0) {
+        return y.num ==0
+            ?lval_err(LERR_DIV_ZERO)
+            :lval_num(x.num / y.num);
+    }
+    if (strcmp(op, "%") == 0) { return lval_num((int)x.num % (int)y.num); }
+
+    return lval_err(LERR_BAD_OP);
 }
 
-double eval(mpc_ast_t* t) {
+lval eval(mpc_ast_t* t) {
     if (strstr(t->tag, "number")) {
-        return atof(t->contents);
+        /* ERANGE macro */
+        errno = 0;
+        double x = atof(t->contents);
+        return errno != ERANGE ? lval_num(x) : lval_err(LERR_BAD_NUM);
     }
-
-    char* op = t->children[1]->contents;
     /* children[0] is '('*/
-    double x = eval(t->children[2]);
+    char* op = t->children[1]->contents;
+
+    lval x = eval(t->children[2]);
 
     int i = 3;
     while (strstr(t->children[i]->tag, "expr")) {
