@@ -26,8 +26,8 @@ make
 ml version 0.0.1
 Press Ctrl+c to Exit
 
-ml> * 2 3.4
-6.8
+ml> ( + 1 3.4 )
+4.4
 ml>
 ```
 
