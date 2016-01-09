@@ -31,3 +31,8 @@ ml
 
 # Debug files
 *.dSYM/
+
+# Cmake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake

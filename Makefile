@@ -16,6 +16,9 @@ SUFFIXES =
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
+# Produce verbose output by default.
+VERBOSE = 1
+
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -114,125 +117,125 @@ ml/fast:
 	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/build
 .PHONY : ml/fast
 
-error.o: error.c.o
-.PHONY : error.o
+src/error.o: src/error.c.o
+.PHONY : src/error.o
 
 # target to build an object file
-error.c.o:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/error.c.o
-.PHONY : error.c.o
+src/error.c.o:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/error.c.o
+.PHONY : src/error.c.o
 
-error.i: error.c.i
-.PHONY : error.i
+src/error.i: src/error.c.i
+.PHONY : src/error.i
 
 # target to preprocess a source file
-error.c.i:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/error.c.i
-.PHONY : error.c.i
+src/error.c.i:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/error.c.i
+.PHONY : src/error.c.i
 
-error.s: error.c.s
-.PHONY : error.s
+src/error.s: src/error.c.s
+.PHONY : src/error.s
 
 # target to generate assembly for a file
-error.c.s:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/error.c.s
-.PHONY : error.c.s
+src/error.c.s:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/error.c.s
+.PHONY : src/error.c.s
 
-evaluation.o: evaluation.c.o
-.PHONY : evaluation.o
+src/evaluation.o: src/evaluation.c.o
+.PHONY : src/evaluation.o
 
 # target to build an object file
-evaluation.c.o:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/evaluation.c.o
-.PHONY : evaluation.c.o
+src/evaluation.c.o:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/evaluation.c.o
+.PHONY : src/evaluation.c.o
 
-evaluation.i: evaluation.c.i
-.PHONY : evaluation.i
+src/evaluation.i: src/evaluation.c.i
+.PHONY : src/evaluation.i
 
 # target to preprocess a source file
-evaluation.c.i:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/evaluation.c.i
-.PHONY : evaluation.c.i
+src/evaluation.c.i:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/evaluation.c.i
+.PHONY : src/evaluation.c.i
 
-evaluation.s: evaluation.c.s
-.PHONY : evaluation.s
+src/evaluation.s: src/evaluation.c.s
+.PHONY : src/evaluation.s
 
 # target to generate assembly for a file
-evaluation.c.s:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/evaluation.c.s
-.PHONY : evaluation.c.s
+src/evaluation.c.s:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/evaluation.c.s
+.PHONY : src/evaluation.c.s
 
-ml.o: ml.c.o
-.PHONY : ml.o
+src/ml.o: src/ml.c.o
+.PHONY : src/ml.o
 
 # target to build an object file
-ml.c.o:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/ml.c.o
-.PHONY : ml.c.o
+src/ml.c.o:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/ml.c.o
+.PHONY : src/ml.c.o
 
-ml.i: ml.c.i
-.PHONY : ml.i
+src/ml.i: src/ml.c.i
+.PHONY : src/ml.i
 
 # target to preprocess a source file
-ml.c.i:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/ml.c.i
-.PHONY : ml.c.i
+src/ml.c.i:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/ml.c.i
+.PHONY : src/ml.c.i
 
-ml.s: ml.c.s
-.PHONY : ml.s
+src/ml.s: src/ml.c.s
+.PHONY : src/ml.s
 
 # target to generate assembly for a file
-ml.c.s:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/ml.c.s
-.PHONY : ml.c.s
+src/ml.c.s:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/ml.c.s
+.PHONY : src/ml.c.s
 
-mpc.o: mpc.c.o
-.PHONY : mpc.o
+src/mpc.o: src/mpc.c.o
+.PHONY : src/mpc.o
 
 # target to build an object file
-mpc.c.o:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/mpc.c.o
-.PHONY : mpc.c.o
+src/mpc.c.o:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/mpc.c.o
+.PHONY : src/mpc.c.o
 
-mpc.i: mpc.c.i
-.PHONY : mpc.i
+src/mpc.i: src/mpc.c.i
+.PHONY : src/mpc.i
 
 # target to preprocess a source file
-mpc.c.i:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/mpc.c.i
-.PHONY : mpc.c.i
+src/mpc.c.i:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/mpc.c.i
+.PHONY : src/mpc.c.i
 
-mpc.s: mpc.c.s
-.PHONY : mpc.s
+src/mpc.s: src/mpc.c.s
+.PHONY : src/mpc.s
 
 # target to generate assembly for a file
-mpc.c.s:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/mpc.c.s
-.PHONY : mpc.c.s
+src/mpc.c.s:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/mpc.c.s
+.PHONY : src/mpc.c.s
 
-parsing.o: parsing.c.o
-.PHONY : parsing.o
+src/parsing.o: src/parsing.c.o
+.PHONY : src/parsing.o
 
 # target to build an object file
-parsing.c.o:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/parsing.c.o
-.PHONY : parsing.c.o
+src/parsing.c.o:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/parsing.c.o
+.PHONY : src/parsing.c.o
 
-parsing.i: parsing.c.i
-.PHONY : parsing.i
+src/parsing.i: src/parsing.c.i
+.PHONY : src/parsing.i
 
 # target to preprocess a source file
-parsing.c.i:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/parsing.c.i
-.PHONY : parsing.c.i
+src/parsing.c.i:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/parsing.c.i
+.PHONY : src/parsing.c.i
 
-parsing.s: parsing.c.s
-.PHONY : parsing.s
+src/parsing.s: src/parsing.c.s
+.PHONY : src/parsing.s
 
 # target to generate assembly for a file
-parsing.c.s:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/parsing.c.s
-.PHONY : parsing.c.s
+src/parsing.c.s:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/parsing.c.s
+.PHONY : src/parsing.c.s
 
 # Help Target
 help:
@@ -243,21 +246,21 @@ help:
 	@echo "... edit_cache"
 	@echo "... ml"
 	@echo "... rebuild_cache"
-	@echo "... error.o"
-	@echo "... error.i"
-	@echo "... error.s"
-	@echo "... evaluation.o"
-	@echo "... evaluation.i"
-	@echo "... evaluation.s"
-	@echo "... ml.o"
-	@echo "... ml.i"
-	@echo "... ml.s"
-	@echo "... mpc.o"
-	@echo "... mpc.i"
-	@echo "... mpc.s"
-	@echo "... parsing.o"
-	@echo "... parsing.i"
-	@echo "... parsing.s"
+	@echo "... src/error.o"
+	@echo "... src/error.i"
+	@echo "... src/error.s"
+	@echo "... src/evaluation.o"
+	@echo "... src/evaluation.i"
+	@echo "... src/evaluation.s"
+	@echo "... src/ml.o"
+	@echo "... src/ml.i"
+	@echo "... src/ml.s"
+	@echo "... src/mpc.o"
+	@echo "... src/mpc.i"
+	@echo "... src/mpc.s"
+	@echo "... src/parsing.o"
+	@echo "... src/parsing.i"
+	@echo "... src/parsing.s"
 .PHONY : help
 
 
