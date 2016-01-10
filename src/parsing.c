@@ -67,7 +67,6 @@ void lval_println(lval* v) {
 
 
 void lval_expr_print(lval* v) {
-    putchar('(');
     for (int i = 0; i < v->count; i++) {
         lval_print(v->cell[i]);
 
@@ -75,7 +74,6 @@ void lval_expr_print(lval* v) {
             putchar(' ');
         }
     }
-    putchar(')');
 }
 
 
