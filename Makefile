@@ -16,9 +16,6 @@ SUFFIXES =
 
 .SUFFIXES: .hpux_make_needs_suffix_list
 
-# Produce verbose output by default.
-VERBOSE = 1
-
 # Suppress display of executed commands.
 $(VERBOSE).SILENT:
 
@@ -116,30 +113,6 @@ ml: cmake_check_build_system
 ml/fast:
 	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/build
 .PHONY : ml/fast
-
-src/error.o: src/error.c.o
-.PHONY : src/error.o
-
-# target to build an object file
-src/error.c.o:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/error.c.o
-.PHONY : src/error.c.o
-
-src/error.i: src/error.c.i
-.PHONY : src/error.i
-
-# target to preprocess a source file
-src/error.c.i:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/error.c.i
-.PHONY : src/error.c.i
-
-src/error.s: src/error.c.s
-.PHONY : src/error.s
-
-# target to generate assembly for a file
-src/error.c.s:
-	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/error.c.s
-.PHONY : src/error.c.s
 
 src/evaluation.o: src/evaluation.c.o
 .PHONY : src/evaluation.o
@@ -246,9 +219,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... ml"
 	@echo "... rebuild_cache"
-	@echo "... src/error.o"
-	@echo "... src/error.i"
-	@echo "... src/error.s"
 	@echo "... src/evaluation.o"
 	@echo "... src/evaluation.i"
 	@echo "... src/evaluation.s"

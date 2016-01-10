@@ -8,7 +8,6 @@
 #include "mpc.h"
 #include "parsing.h"
 #include "evaluation.h"
-#include "error.h"
 
 
 

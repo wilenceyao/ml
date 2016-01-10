@@ -5,10 +5,15 @@
 #include <string.h>
 
 #include "mpc.h"
-#include "error.h"
+#include "parsing.h"
 
-lval eval_op(lval x, char* op, lval y);
-lval eval(mpc_ast_t* t);
+
+lval* lval_eval_sexpr(lval* v);
+lval* lval_eval(lval* v);
+lval* lval_take(lval* v, int i);
+lval* lval_pop(lval* v, int i);
+lval* builtin_op(lval* a, char* op);
+
 
 
 #endif
