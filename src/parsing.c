@@ -36,6 +36,15 @@ lval* lval_sexpr(void) {
 }
 
 
+lval* lval_qexpr(void) {
+    lval* v = malloc(sizeof(lval));
+    v->type = LVAL_QEXPR;
+    v->count = 0;
+    v->cell = NULL;
+    return v;
+}
+
+
 void lval_print(lval* v) {
     switch (v->type) {
         case LVAL_NUM:
@@ -54,7 +63,10 @@ void lval_print(lval* v) {
             printf("%s", v->sym);
             break;
         case LVAL_SEXPR:
-            lval_expr_print(v);
+            lval_expr_print(v, '(', ')');
+            break;
+        case LVAL_QEXPR:
+            lval_expr_print(v, '{', '}');
             break;
     }
 }
@@ -66,7 +78,8 @@ void lval_println(lval* v) {
 }
 
 
-void lval_expr_print(lval* v) {
+void lval_expr_print(lval* v, char open, char close) {
+    putchar(open);
     for (int i = 0; i < v->count; i++) {
         lval_print(v->cell[i]);
 
@@ -74,6 +87,7 @@ void lval_expr_print(lval* v) {
             putchar(' ');
         }
     }
+    putchar(close);
 }
 
 
@@ -93,12 +107,14 @@ lval* lval_read(mpc_ast_t* t) {
     lval* x = NULL;
     if (strcmp(t->tag, ">") == 0) { x = lval_sexpr(); }
     if (strstr(t->tag, "sexpr")) { x = lval_sexpr(); }
+    if (strstr(t->tag, "qexpr"))  { x = lval_qexpr(); }
 
     for (int i = 0; i<t->children_num; i++) {
         if (strcmp(t->children[i]->contents, "(") == 0) { continue; }
         if (strcmp(t->children[i]->contents, ")") == 0) { continue; }
         if (strcmp(t->children[i]->tag,  "regex") == 0) { continue; }
-
+        if (strcmp(t->children[i]->contents, "{") == 0) { continue; }
+        if (strcmp(t->children[i]->contents, "}") == 0) { continue; }
         /* Add children to array cell */
         x = lval_add(x, lval_read(t->children[i]));
     }
@@ -125,6 +141,7 @@ void lval_del(lval* v) {
         case LVAL_SYM:
             free(v->sym);
             break;
+        case LVAL_QEXPR:
         case LVAL_SEXPR:
             for (int i = 0; i < v->count; i++) {
                 lval_del(v->cell[i]);
@@ -133,4 +150,37 @@ void lval_del(lval* v) {
             break;
     }
     free(v);
+}
+
+
+lval* lval_take(lval* v, int i) {
+    lval* x = lval_pop(v, i);
+    lval_del(v);
+    return x;
+}
+
+
+lval* lval_pop(lval* v, int i) {
+    lval* x = v->cell[i];
+
+    /* Shift memory after the item at "i" over the top */
+    memmove(&v->cell[i], &v->cell[i+1],
+        sizeof(lval*) * (v->count-i-1));
+
+    /* Decrease the count of items in the list */
+    v->count--;
+
+    /* Reallocate the memory used */
+    v->cell = realloc(v->cell, sizeof(lval*) * v->count);
+    return x;
+}
+
+
+lval* lval_join(lval* x, lval* y) {
+    while (y->count) {
+        x = lval_add(x, lval_pop(y, 0));
+    }
+    /* Delete the empty 'y' and return 'x' */
+    lval_del(y);  
+    return x;
 }

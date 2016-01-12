@@ -114,6 +114,30 @@ ml/fast:
 	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/build
 .PHONY : ml/fast
 
+src/builtin.o: src/builtin.c.o
+.PHONY : src/builtin.o
+
+# target to build an object file
+src/builtin.c.o:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/builtin.c.o
+.PHONY : src/builtin.c.o
+
+src/builtin.i: src/builtin.c.i
+.PHONY : src/builtin.i
+
+# target to preprocess a source file
+src/builtin.c.i:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/builtin.c.i
+.PHONY : src/builtin.c.i
+
+src/builtin.s: src/builtin.c.s
+.PHONY : src/builtin.s
+
+# target to generate assembly for a file
+src/builtin.c.s:
+	$(MAKE) -f CMakeFiles/ml.dir/build.make CMakeFiles/ml.dir/src/builtin.c.s
+.PHONY : src/builtin.c.s
+
 src/evaluation.o: src/evaluation.c.o
 .PHONY : src/evaluation.o
 
@@ -219,6 +243,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... ml"
 	@echo "... rebuild_cache"
+	@echo "... src/builtin.o"
+	@echo "... src/builtin.i"
+	@echo "... src/builtin.s"
 	@echo "... src/evaluation.o"
 	@echo "... src/evaluation.i"
 	@echo "... src/evaluation.s"

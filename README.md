@@ -9,6 +9,7 @@ Implemented:
  * Grammar
  * Arithmetic expression
  * Error Handling
+ * Builtin function: list, head, tail, eval
 
 ## Environment
  * CentOS 7 (3.10.0-123.el7.x86_64)
@@ -35,6 +36,8 @@ ml> ( + 1 2.3)
 3.3
 ml> (/ 2 0)
 Error: Division Zero
+ml> eval (head {(+ 1 2) (+ 10 20)})
+3
 ml>
 ```
 

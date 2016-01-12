@@ -7,18 +7,22 @@ int main(int argc, char** argv) {
     mpc_parser_t* Number = mpc_new("number");
     mpc_parser_t* Symbol = mpc_new("symbol");
     mpc_parser_t* Sexpr = mpc_new("sexpr");
+    mpc_parser_t* Qexpr = mpc_new("qexpr");
     mpc_parser_t* Expr = mpc_new("expr");
     mpc_parser_t* Ml = mpc_new("ml");
+
     /* define language */
     mpca_lang(MPCA_LANG_DEFAULT,
     "                                                        \
         number  : /-?[0-9]+([.][0-9]+)?/ ;                   \
-        symbol  : '+' | '-' | '*' | '/' | '%' ;              \
+        symbol  : '+' | '-' | '*' | '/' | '%' | \"join\"     \
+                | \"eval\" | \"list\" | \"head\" | \"tail\"; \
         sexpr   : '(' <expr>* ')' ;                          \
-        expr    : <number> | <symbol> | <sexpr> ;            \
+        qexpr   : '{' <expr>* '}' ;                          \
+        expr    : <number> | <symbol> | <sexpr> | <qexpr> ;  \
         ml      : /^/ <expr>*   /$/ ;                        \
     ",
-    Number, Symbol, Sexpr, Expr, Ml);
+    Number, Symbol, Sexpr, Qexpr, Expr, Ml);
     puts("ml version 0.0.1");
     puts("Press Ctrl+c to Exit\n");
     
@@ -42,7 +46,7 @@ int main(int argc, char** argv) {
     }
 
     /* Undefine and Delete our Parsers */
-    mpc_cleanup(5, Number, Symbol, Sexpr, Expr, Ml);
+    mpc_cleanup(6, Number, Symbol, Sexpr, Qexpr, Expr, Ml);
     
     return 0;
 }
